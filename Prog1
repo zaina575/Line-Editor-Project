@@ -1,0 +1,11 @@
+#include <iostream>
+#include "linelist.h"
+
+int main()
+e{
+	LineList L;
+	L.insertLine("My first line");
+	L.printList();
+	return 0;
+
+}

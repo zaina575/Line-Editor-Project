@@ -1,0 +1,51 @@
+Problem that we are trying to solve: Create a line editor to edit a file that we want to based on various commands we used to edit the file, 
+such as insert and delete line.
+
+We are using iostream, fstream, stdlib.h, stirng, and namespace std, which are inbuilt from the standard library in the client file. 
+We are also using linelist.h, which is being implemented from a class that I created in the client file.
+
+The linelist class private variables are the currLine variable of type of LineNode, an integer representing currLineNum, 
+and an integer representing length. The public functions that are accessible to anyone are goToTop, goToBottom, insertLine, 
+deleteLine, printList, moveNextLine, movePrevLine, getCurrLineNum, getLength, getCurrLine. All of them have no parameters besides
+insertLine which takes in a string as a parameter. There is also a LineList constructor that is publically available.
+
+
+The first input that the client program receives is the file that they want to edit from the command line. Then, we use the information
+in the file to create a LineList with each of the lines in the file as LineList nodes. Then, we start receiving input from the 
+command line for the different valid commands, which are I-insert line, D-delete line, L-print entire list, P -go to previous line
+N- go to next line, and E - exit and save text back to the file. Then, the output is the edited file with the changes made using the 
+commands.
+
+
+I have five different methods in my client program. 
+
+My first method intializes a LineList object based off of the file that is sent at the command line. This method has three parameters which 
+are an integer that stores the size of the array at the command line, an array that stores what is sent at the command line, and a LineList 
+object. Within the method, I declared an ifstream object, and then called my method that opens the file. Then, I created a string that stores the current line. Next, I used a while loop to get every individual line in the file, and added each line as a LineList node to the LineList 
+object that was declared. Then, I printed the list of lines that are in the file, and went to the bottom of the list. 
+
+The second method opens up the file. This method has three parameters which are an ifstream object, an array that stores what is sent at the
+command line, and an integer that stores the size of the array at the command line. I first checked to make sure that a filename was sent at 
+the command line based off if the integer equaled one. If it does equal one, then I send an error message. Once, there is a valid file name
+I get what is stored at the second position in the array, which is the file name and store it as a string. Then, I open up the file that
+was sent at the command line. 
+
+The third method that I used was to get the command at the command line. This method has two parameters which are LineList object and a 
+character. I used a print statement to print out everything properly in terms of formatting and read in the input from the keyboard.
+
+The fourth method that I used was to insert a line into the LineList object. This method has only one parameter, which is a LineList object.
+I first used a print staement to print out everything properly in terms of formatting, and then I made sure to clear up the command line, so
+I take input for the line that the user inputs at the command line. Then, I create a string that stores the line that the user inputs. Next,
+I capture the whole line that the user inputs. Then, I use the built-in insert line method from the LineList class.
+
+The last method that I used was to close up the file with the changes made based on the commands. This method has two parameters, which are 
+an array that stores the inputs at the command line, and a LineList object. First, I declare an ofstream object. Then, I store the second 
+element in the array into a string. Then, I open up the outfile and go to the top of the LineList. Then, I use a for loop to go line by line
+and add each line to the outfile. Lastly, I close the outfile.
+
+In my main method, I created a LineList object, and an a character that stores the command that the user enters. Next, I have I call my method
+that intialized the LineList object based on the file that is sent to the command line. Then, I have a do while loop that gets the command 
+that is sent on the command line and call the method that is associated with getting the command at the command line. Then, I have
+a switch statement that has cases for each individual command, and it stops when the exit command is typed. Each switch statement case
+has it's associated method called. There is also a default case for when someone enters input that is not one of the commands. Then,
+the method that closes up the file with the changes made based on the commands is called.  
